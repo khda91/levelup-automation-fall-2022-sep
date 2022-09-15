@@ -34,4 +34,16 @@ public class Calculator {
     public double sin(double d) {
         return Math.sin(d);
     }
+
+    public int power(int a, int pow) {
+        if (pow < 0) {
+            throw new IllegalArgumentException("Степерь не может быть отрицательной");
+        }
+
+        int res = 1;
+        for (int i = 0; i < pow; i++) {
+            res *= a;
+        }
+        return res;
+    }
 }
