@@ -28,14 +28,6 @@ public class App {
         System.out.println("========");
         System.out.println();
 
-        System.out.println("Деление");
-
-        System.out.println("2 / 2 = " + calculator.divide(2, 2));
-        System.out.println("2 / 0 = " + calculator.divide(2, 0));
-
-        System.out.println("========");
-        System.out.println();
-
         System.out.println("Факториал");
 
         System.out.println("5! = " + calculator.factorial(5));
