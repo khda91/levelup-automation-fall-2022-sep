@@ -24,5 +24,12 @@ public class App {
 
         System.out.println("========");
         System.out.println();
+
+        System.out.println("Деление");
+
+        System.out.println("2 / 2 = " + calculator.divide(2, 2));
+
+        System.out.println("========");
+        System.out.println();
     }
 }
