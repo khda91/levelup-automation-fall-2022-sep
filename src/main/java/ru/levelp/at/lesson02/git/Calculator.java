@@ -20,4 +20,17 @@ public class Calculator {
         }
         return a / b;
     }
+
+    public long factorial(long a) {
+        long res = 1;
+        if (a < 0) {
+            throw new IllegalArgumentException("Отрицательного факториала не бывает");
+        }
+
+        for (int i = 1; i <= a; i++) {
+            res *= i;
+        }
+
+        return res;
+    }
 }
