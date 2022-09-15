@@ -14,6 +14,10 @@ public class Calculator {
         return a * b;
     }
 
+    public double divide(double a, double b) {
+        return a / b;
+    }
+
     public long factorial(long a) {
         long res = 1;
         if (a < 0) {
