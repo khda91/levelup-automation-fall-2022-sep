@@ -30,4 +30,8 @@ public class Calculator {
 
         return res;
     }
+
+    public double sin(double d) {
+        return Math.sin(d);
+    }
 }
