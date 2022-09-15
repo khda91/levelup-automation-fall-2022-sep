@@ -31,6 +31,7 @@ public class App {
         System.out.println("Факториал");
 
         System.out.println("5! = " + calculator.factorial(5));
+        System.out.println("3! = " + calculator.factorial(3));
 
         System.out.println("========");
         System.out.println();
