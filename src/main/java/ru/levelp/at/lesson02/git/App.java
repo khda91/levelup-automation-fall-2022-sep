@@ -16,6 +16,7 @@ public class App {
 
         System.out.println("2 - 2 = " + calculator.subtract(2, 2));
         System.out.println("3 - 2 = " + calculator.subtract(3, 2));
+        System.out.println("3 - 10 = " + calculator.subtract(3, 10));
 
         System.out.println("========");
         System.out.println();
