@@ -10,17 +10,10 @@ public class App {
 
         System.out.println("========");
         System.out.println();
-
+        
         System.out.println("Вычитание");
 
         System.out.println("2 - 2 = " + calculator.subtract(2, 2));
-
-        System.out.println("========");
-        System.out.println();
-
-        System.out.println("Умножение");
-
-        System.out.println("2 * 2 = " + calculator.multiply(2, 2));
 
         System.out.println("========");
         System.out.println();
