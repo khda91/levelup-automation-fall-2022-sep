@@ -14,10 +14,7 @@ public class Calculator {
         return a * b;
     }
 
-    public int divide(int a, int b) {
-        if (b == 0) {
-            throw new IllegalArgumentException("b не может быть 0. Делить на 0 нельзя!");
-        }
+    public double divide(double a, double b) {
         return a / b;
     }
 
