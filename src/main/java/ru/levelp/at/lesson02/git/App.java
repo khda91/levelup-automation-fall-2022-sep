@@ -31,5 +31,12 @@ public class App {
 
         System.out.println("========");
         System.out.println();
+
+        System.out.println("Факториал");
+
+        System.out.println("5! = " + calculator.factorial(5));
+
+        System.out.println("========");
+        System.out.println();
     }
 }
