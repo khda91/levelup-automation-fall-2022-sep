@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenLocal()
+    maven {
+        url = uri('https://repo.maven.apache.org/maven2/')
+    }
+}
+
+dependencies {
+    implementation 'org.webjars:jquery:3.6.1'
+    testImplementation 'org.testng:testng:7.6.1'
+    testImplementation 'org.assertj:assertj-core:3.23.1'
+}
+
+group = 'ru.levelp.at'
+version = '1.0-SNAPSHOT'
+description = 'levelup-automation-fall-2022-sep'
+java.sourceCompatibility = JavaVersion.VERSION_11
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+tasks.named('test') {
+    useTestNG()
+}
