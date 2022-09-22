@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="All tests group suite">
+
+    <test name="All Test Negative group package">
+        <groups>
+            <run>
+                <include name="Negative"/>
+            </run>
+        </groups>
+
+        <packages>
+            <package name="ru.levelp.at.lesson0304.unit.testing.testng.list.converter.hooks.group.*"/>
+        </packages>
+    </test>
+
+    <test name="All Test Positive Factorial group package">
+        <groups>
+            <run>
+                <include name="Factorial"/>
+            </run>
+        </groups>
+
+        <packages>
+            <package name="ru.levelp.at.lesson0304.unit.testing.testng.list.converter.hooks.group.*"/>
+        </packages>
+    </test>
+
+</suite>
