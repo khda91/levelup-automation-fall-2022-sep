@@ -1,17 +1,17 @@
-package ru.levelp.at.lesson0304.unit.testing.testng.list.converter.hooks.tests;
+package ru.levelp.at.lesson0304.unit.testing.testng.list.converter.hooks.without.lifepercycle;
 
 import java.util.List;
 import org.assertj.core.api.Assertions;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
-public class PositiveListConverterTest extends BaseListConverterTest {
+public class PositiveHooksTest extends BaseHooksTest {
 
     private static final List<String> INPUT = List.of("sea", "Summer", "count", "Synchronisation");
     private static final List<String> EXPECTED_OUTPUT = List.of("ea", "ummer", "count", "ynchroniation");
 
     @Test
     public void positiveRemoveLetterS() {
-        System.out.println("positiveRemoveLetterSFromString");
+        System.out.println(this.getClass().getName() + " positiveRemoveLetterS");
         List<String> actualOutput = converter.removeLetterS(INPUT);
         Assertions.assertThat(actualOutput).isEqualTo(EXPECTED_OUTPUT);
     }
