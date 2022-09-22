@@ -3,11 +3,10 @@ package ru.levelp.at.lesson0304.unit.testing.testng.list.converter;
 import java.util.Collections;
 import java.util.List;
 import org.assertj.core.api.Assertions;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 import ru.levelp.at.lesson0304.unit.testing.ListConverter;
 
-public class ListConverterTest {
+public class ListConverterIT {
 
     private static final List<String> INPUT = List.of("sea", "Summer", "count", "Synchronisation");
     private static final List<String> EXPECTED_OUTPUT = List.of("ea", "ummer", "count", "ynchroniation");
@@ -31,8 +30,8 @@ public class ListConverterTest {
     public void inputListIsNullTestNgAssertTest() {
         ListConverter converter = new ListConverter();
         List<String> actualOutput = converter.removeLetterS(null);
-        // assert testng
-        Assert.assertTrue(actualOutput.isEmpty());
+        // assert junit jupiter
+        org.junit.jupiter.api.Assertions.assertTrue(actualOutput.isEmpty());
     }
 
     @Test

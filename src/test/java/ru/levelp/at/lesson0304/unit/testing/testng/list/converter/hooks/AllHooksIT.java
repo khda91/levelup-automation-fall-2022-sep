@@ -3,42 +3,41 @@ package ru.levelp.at.lesson0304.unit.testing.testng.list.converter.hooks;
 import java.util.Collections;
 import java.util.List;
 import org.assertj.core.api.Assertions;
-import org.testng.Assert;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import ru.levelp.at.lesson0304.unit.testing.ListConverter;
 
-public class BeforeClassHooksListConverterTest {
+public class AllHooksIT {
 
     private static final List<String> INPUT = List.of("sea", "Summer", "count", "Synchronisation");
     private static final List<String> EXPECTED_OUTPUT = List.of("ea", "ummer", "count", "ynchroniation");
 
     private ListConverter converter;
 
-    @BeforeClass
-    public void beforeClass() {
-        System.out.println("before class");
+    @BeforeAll
+    public static void beforeAll() {
+        System.out.println(AllHooksIT.class.getName() + " before all");
     }
 
-    @BeforeMethod
-    public void beforeMethod() {
-        System.out.println("before method");
+    @BeforeEach
+    public void setUp() {
+        System.out.println(this.getClass().getName() + " before each");
         converter = new ListConverter();
     }
 
     @Test
     public void positiveRemoveLetterS() {
-        System.out.println("positiveRemoveLetterSFromString");
+        System.out.println(this.getClass().getName() + " positiveRemoveLetterS");
         List<String> actualOutput = converter.removeLetterS(INPUT);
         Assertions.assertThat(actualOutput).isEqualTo(EXPECTED_OUTPUT);
     }
 
     @Test
     public void inputListIsNullAssertjTest() {
-        System.out.println("inputListIsNullAssertJTest");
+        System.out.println(this.getClass().getName() + " inputListIsNullAssertjTest");
         List<String> actualOutput = converter.removeLetterS(null);
         // assertj
         Assertions.assertThat(actualOutput).isEmpty();
@@ -46,27 +45,27 @@ public class BeforeClassHooksListConverterTest {
 
     @Test
     public void inputListIsNullTestNgAssertTest() {
-        System.out.println("inputListIsNullTestNgAssertTest");
+        System.out.println(this.getClass().getName() + " inputListIsNullTestNgAssertTest");
         List<String> actualOutput = converter.removeLetterS(null);
-        // assert testng
-        Assert.assertTrue(actualOutput.isEmpty());
+        // assert junit jupiter
+        org.junit.jupiter.api.Assertions.assertTrue(actualOutput.isEmpty());
     }
 
     @Test
     public void inputListIsEmptyTest() {
-        System.out.println("inputListIsNullTestNgAssertTest");
+        System.out.println(this.getClass().getName() + " inputListIsEmptyTest");
         List<String> actualOutput = converter.removeLetterS(Collections.emptyList());
         Assertions.assertThat(actualOutput).isEmpty();
     }
 
-    @AfterMethod
-    public void afterMethod() {
-        System.out.println("after method");
+    @AfterEach
+    public void tearDown() {
+        System.out.println(this.getClass().getName() + " after each");
         converter = null;
     }
 
-    @AfterClass
-    public void afterClass() {
-        System.out.println("after class");
+    @AfterAll
+    public static void afterAll() {
+        System.out.println(AllHooksIT.class.getName() + " after all");
     }
 }
