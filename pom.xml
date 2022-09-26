@@ -17,6 +17,7 @@
         <testng.version>7.6.1</testng.version>
         <jquery.version>3.6.1</jquery.version>
         <assertj-core.version>3.23.1</assertj-core.version>
+        <selenium-java.version>4.4.0</selenium-java.version>
 
         <maven-checkstyle-plugin.version>3.2.0</maven-checkstyle-plugin.version>
         <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
@@ -77,6 +78,11 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${selenium-java.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
