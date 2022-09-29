@@ -32,9 +32,9 @@ public class SeleniumFrameTest {
 
     @Test
     public void frame() {
-        WebElement iFrame = driver.findElement(By.cssSelector("iframe.dzen-search-arrow-common__frame"));
+        WebElement frame = driver.findElement(By.cssSelector("iframe.dzen-search-arrow-common__frame"));
         SleepUtils.sleep(1000);
-        driver.switchTo().frame(iFrame);
+        driver.switchTo().frame(frame);
 
         driver.findElement(By.xpath("//input[contains(@class, 'arrow__input')]")).sendKeys("abc");
         SleepUtils.sleep(3000);

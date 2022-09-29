@@ -1,6 +1,7 @@
 package ru.levelp.at.lesson05.selenium.basic.locators;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -9,8 +10,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import ru.levelp.at.utils.SleepUtils;
-
-import java.util.List;
 
 public class SeleniumXpathTest {
 

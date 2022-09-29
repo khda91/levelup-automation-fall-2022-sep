@@ -1,15 +1,14 @@
 package ru.levelp.at.lesson05.selenium.basic.sample;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.levelp.at.utils.SleepUtils;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class SeleniumFirefoxSampleTest {
 

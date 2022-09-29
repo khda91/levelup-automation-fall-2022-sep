@@ -1,6 +1,8 @@
 package ru.levelp.at.lesson05.selenium.basic.waits;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import java.time.Duration;
+import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -8,9 +10,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-
-import java.time.Duration;
-import java.util.List;
 
 public class SeleniumImplicitTest {
 
@@ -35,7 +34,7 @@ public class SeleniumImplicitTest {
         driver.findElement(By.id("search:submit")).click();
 
         List<WebElement> searchResults = driver
-                .findElements(By.cssSelector("[data-selector='SnippetResultTitle-link']"));
+            .findElements(By.cssSelector("[data-selector='SnippetResultTitle-link']"));
         System.out.println("searchResults size " + searchResults.size());
         for (WebElement searchResult : searchResults) {
             System.out.println(searchResult.getText());
