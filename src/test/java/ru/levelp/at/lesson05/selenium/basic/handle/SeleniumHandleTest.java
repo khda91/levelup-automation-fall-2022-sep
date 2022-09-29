@@ -9,8 +9,6 @@ import org.openqa.selenium.WindowType;
 import org.openqa.selenium.chrome.ChromeDriver;
 import ru.levelp.at.utils.SleepUtils;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 public class SeleniumHandleTest {
 
     private static final String DZEN_URL = "https://dzen.ru/";
