@@ -1,4 +1,6 @@
-package ru.levelp.at.lesson0708.api.configuration;
+package ru.levelp.at.lesson0708.api.request.body;
+
+import static io.restassured.RestAssured.given;
 
 import com.github.javafaker.Faker;
 import io.restassured.RestAssured;
@@ -8,12 +10,13 @@ import io.restassured.filter.log.LogDetail;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import org.apache.http.HttpStatus;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static io.restassured.RestAssured.given;
 
 public class CreateEntityRestAssuredTest {
 
@@ -79,5 +82,57 @@ public class CreateEntityRestAssuredTest {
             .statusCode(HttpStatus.SC_CREATED)
             .body("data.id", Matchers.not(Matchers.emptyString()))
             .body("data.email", Matchers.equalTo(email));
+    }
+
+    @Test
+    void createPersonEmailLongerThat255() {
+        var email =
+            "jhadhdjskhfkdsjafhdjnvjdsbhvbadsbvhdbsvahvbdhbvaddsavdsvadsvdsdsvdsvdsvpoewuqyewyyewghvbdsbvdsbvevebb"
+                + "ejhadhdjskhfkdsjafhdjnvjdsbhvbadsbvhdbsvahvbdhbvaddsavdsvadsvdsdsvdsvdsvpoewuqyewyyewghvbdsbvds"
+                + "bvevebbe@bdshushugihresblirhburesasdaverbvaerberb.comerberbwebe";
+        given()
+            .spec(requestSpecification)
+            .contentType(ContentType.JSON)
+            .body("{\n"
+                + "  \"role\": \"LECTOR\",\n"
+                + "  \"email\": \"" + email + "\",\n"
+                + "  \"phoneNumber\": \"+79211234567\"\n"
+                + "}")
+            .when()
+            .post("/people")
+            .then()
+            .spec(responseSpecification)
+            .statusCode(HttpStatus.SC_BAD_REQUEST);
+    }
+
+    @Test
+    void createPersonFromFile() {
+        var email = new Faker().internet().emailAddress();
+        var firstName = new Faker().name().firstName();
+        var lastName = new Faker().name().lastName();
+        given()
+            .spec(requestSpecification)
+            .contentType(ContentType.JSON)
+            .body(readJsonRequest(email, firstName, lastName))
+            .when()
+            .post("/people")
+            .then()
+            .spec(responseSpecification)
+            .statusCode(HttpStatus.SC_CREATED)
+            .body("data.id", Matchers.not(Matchers.emptyString()))
+            .body("data.email", Matchers.equalTo(email));
+    }
+
+    private String readJsonRequest(String email, String firstName, String lastName) {
+        try {
+            return String.join("",
+                             Files.readAllLines(Path.of("src/test/resources/ru/levelp/at"
+                                 + "/lesson0708/api/requests/createUserJson.json")))
+                         .replace("#email", email)
+                .replace("#firstName", firstName)
+                .replace("#lastName", lastName);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
