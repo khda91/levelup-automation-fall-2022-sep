@@ -23,6 +23,9 @@
         <commons-io.version>2.11.0</commons-io.version>
         <json-path.version>2.7.0</json-path.version>
         <lombok.version>1.18.24</lombok.version>
+        <postgresql.version>42.5.0</postgresql.version>
+        <HikariCP.version>5.0.1</HikariCP.version>
+        <spring-jdbc.version>5.3.23</spring-jdbc.version>
 
         <maven-checkstyle-plugin.version>3.2.0</maven-checkstyle-plugin.version>
         <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
@@ -84,6 +87,24 @@
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
             <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            <version>${HikariCP.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${spring-jdbc.version}</version>
         </dependency>
 
     </dependencies>
