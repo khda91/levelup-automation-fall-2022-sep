@@ -1,9 +1,9 @@
 package ru.levelp.at.lesson0709.api.configuration;
 
 import io.restassured.RestAssured;
+import java.util.Map;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
-import java.util.Map;
 
 public class LogginRestAssuredTest {
 
