@@ -1,12 +1,12 @@
 package ru.levelp.at.lesson0709.api.model;
 
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import java.util.List;
 
 @Data
 @NoArgsConstructor

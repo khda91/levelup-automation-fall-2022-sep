@@ -1,13 +1,13 @@
 package ru.levelp.at.lesson0709.api.database.model;
 
+import java.time.LocalDate;
+import java.util.UUID;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import java.time.LocalDate;
-import java.util.UUID;
 
 @Data
 @NoArgsConstructor
