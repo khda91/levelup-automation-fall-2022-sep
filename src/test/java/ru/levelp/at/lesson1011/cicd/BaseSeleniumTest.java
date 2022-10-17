@@ -7,7 +7,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class BaseSeleniumTest {
@@ -21,13 +20,8 @@ public abstract class BaseSeleniumTest {
     @BeforeEach
     public void setUp() {
         WebDriverManager.chromedriver().setup();
-        ChromeOptions options = new ChromeOptions();
-        boolean headless = Boolean.parseBoolean(System.getenv("HEADLESS"));
-        if (headless) {
-            options.setHeadless(true);
-        }
         faker = new Faker();
-        driver = new ChromeDriver(options);
+        driver = new ChromeDriver();
         wait = new WebDriverWait(driver, Duration.ofMillis(10000));
     }
 
