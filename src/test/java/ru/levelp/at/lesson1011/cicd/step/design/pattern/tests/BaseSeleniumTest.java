@@ -11,6 +11,7 @@ import org.junit.jupiter.api.TestInstance.Lifecycle;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.levelp.at.lesson1011.cicd.EnvironmentResourcesGenerator;
@@ -36,7 +37,13 @@ public abstract class BaseSeleniumTest {
     @BeforeEach
     public void setUp() {
         WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        System.out.println("HEADLESS=" + System.getenv("HEADLESS"));
+        boolean headless = Boolean.parseBoolean(System.getenv("HEADLESS"));
+        if (headless) {
+            options.setHeadless(true);
+        }
+        driver = new ChromeDriver(options);
         wait = new WebDriverWait(driver, Duration.ofMillis(10000));
         loginRegistrationSteps = new LoginRegistrationSteps(driver);
         indexPageSteps = new IndexPageSteps(driver);

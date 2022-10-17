@@ -4,6 +4,7 @@ stages:
     - check
     - build
     - deploy
+    - report
     - release
 
 checkstyle:
@@ -52,3 +53,35 @@ build:
             - target/*.jar
     rules:
         -   if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+
+release:
+    image: markhobson/maven-chrome:jdk-11
+    variables:
+        HEADLESS: "true"
+    stage: deploy
+    script:
+        - printenv
+        - mvn clean test -P lesson-1011-cicd-selenium
+    allow_failure: true
+    artifacts:
+        paths:
+            - target/allure-results
+        when: always
+    rules:
+        -   if: $CI_COMMIT_BRANCH == 'master'
+
+allure_report:
+    stage: report
+    script:
+        - mvn allure:report
+    artifacts:
+        paths:
+            - target/site
+    dependencies:
+        - release
+    rules:
+        -   if: $CI_COMMIT_BRANCH == 'master'
+#    needs:
+#        - release
+#    only:
+#        - master
