@@ -14,6 +14,8 @@ checkstyle:
         paths:
             - target/checkstyle-*.*
         when: on_failure
+    only:
+        - merge_requests
 
 test_job_before:
     stage: check
@@ -21,6 +23,8 @@ test_job_before:
         - echo "before script"
     script:
         - echo "script"
+    only:
+        - merge_requests
 
 test_job_after:
     stage: check
@@ -28,11 +32,16 @@ test_job_after:
         - echo "script"
     after_script:
         - echo "after script"
+    rules:
+        -   if: $CI_PIPELINE_SOURCE == 'merge_request_event'
 
 build_bash_script:
     stage: build
     script:
         - sh ./script.sh
+        - printenv
+    rules:
+        -   if: $CI_PIPELINE_SOURCE == 'merge_request_event'
 
 build:
     stage: build
@@ -41,3 +50,5 @@ build:
     artifacts:
         paths:
             - target/*.jar
+    rules:
+        -   if: $CI_PIPELINE_SOURCE == 'merge_request_event'
