@@ -4,6 +4,7 @@ stages:
     - check
     - build
     - deploy
+    - report
     - release
 
 checkstyle:
@@ -67,7 +68,7 @@ release:
         -   if: $CI_COMMIT_BRANCH == 'master'
 
 allure_report:
-    stage: deploy
+    stage: report
     script:
         - mvn allure:report
     artifacts:
