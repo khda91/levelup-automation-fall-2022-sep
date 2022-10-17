@@ -1,0 +1,54 @@
+image: maven:3.8.6-eclipse-temurin-11
+
+stages:
+    - check
+    - build
+    - deploy
+    - release
+
+checkstyle:
+    stage: check
+    script:
+        - mvn clean validate
+    artifacts:
+        paths:
+            - target/checkstyle-*.*
+        when: on_failure
+    only:
+        - merge_requests
+
+test_job_before:
+    stage: check
+    before_script:
+        - echo "before script"
+    script:
+        - echo "script"
+    only:
+        - merge_requests
+
+test_job_after:
+    stage: check
+    script:
+        - echo "script"
+    after_script:
+        - echo "after script"
+    rules:
+        -   if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+
+build_bash_script:
+    stage: build
+    script:
+        - sh ./script.sh
+        - printenv
+    rules:
+        -   if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+
+build:
+    stage: build
+    script:
+        - mvn verify -P lesson-1011-cicd-calculator
+    artifacts:
+        paths:
+            - target/*.jar
+    rules:
+        -   if: $CI_PIPELINE_SOURCE == 'merge_request_event'

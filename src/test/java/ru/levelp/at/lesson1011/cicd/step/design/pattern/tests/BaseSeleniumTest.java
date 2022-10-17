@@ -6,24 +6,21 @@ import java.time.Duration;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.TestInfo;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
-import org.junit.jupiter.api.TestReporter;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.jupiter.api.extension.ExtensionContext;
-import org.junit.jupiter.api.extension.ExtensionContext.Namespace;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.levelp.at.lesson1011.cicd.EnvironmentResourcesGenerator;
 import ru.levelp.at.lesson1011.cicd.extension.FailTestExtension;
+import ru.levelp.at.lesson1011.cicd.step.design.pattern.context.TestContext;
 import ru.levelp.at.lesson1011.cicd.step.design.pattern.steps.IndexPageSteps;
 import ru.levelp.at.lesson1011.cicd.step.design.pattern.steps.LoginRegistrationSteps;
 
 @TestInstance(Lifecycle.PER_CLASS)
-// @ExtendWith(FailTestExtension.class)
+@ExtendWith(FailTestExtension.class)
 public abstract class BaseSeleniumTest {
 
     protected WebDriver driver;
@@ -37,18 +34,20 @@ public abstract class BaseSeleniumTest {
     protected IndexPageSteps indexPageSteps;
 
     @BeforeEach
-    public void setUp(TestReporter testInfo) {
+    public void setUp() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         wait = new WebDriverWait(driver, Duration.ofMillis(10000));
         loginRegistrationSteps = new LoginRegistrationSteps(driver);
         indexPageSteps = new IndexPageSteps(driver);
 
+        TestContext.getInstance().addObject("driver", driver);
         // context.getStore(Namespace.GLOBAL).put("web-driver", driver);
     }
 
     @AfterEach
     public void tearDown() {
+        System.out.println("======== After");
         driver.quit();
     }
 
