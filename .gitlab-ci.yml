@@ -10,3 +10,25 @@ checkstyle:
     stage: check
     script:
         - mvn clean validate
+
+test_job_before:
+    stage: check
+    before_script:
+        - echo "before script"
+    script:
+        - echo "script"
+
+test_job_after:
+    stage: check
+    script:
+        - echo "script"
+    after_script:
+        - echo "after script"
+
+build:
+    stage: build
+    script:
+        - mvn verify -P lesson-1011-cicd-calculator
+    artifacts:
+        paths:
+            - target/*.jar

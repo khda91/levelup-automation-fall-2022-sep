@@ -118,6 +118,21 @@
 
     </dependencies>
 
+    <profiles>
+        <profile>
+            <id>lesson-1011-cicd-calculator</id>
+            <properties>
+                <test.run>**/lesson02/**/*Test.class</test.run>
+            </properties>
+        </profile>
+        <profile>
+            <id>lesson-1011-cicd-selenium</id>
+            <properties>
+                <test.run>**/lesson1011/**/FailTest.class</test.run>
+            </properties>
+        </profile>
+    </profiles>
+
     <build>
         <plugins>
             <!-- Checkstyle -->
@@ -166,7 +181,8 @@
                     <includes>
 <!--                        <include>**/lesson1011/**/tests/*Test.class</include>-->
 <!--                        <include>**/lesson1011/**/JsonAllureTest.class</include>-->
-                        <include>**/lesson1011/**/FailTest.class</include>
+<!--                        <include>**/lesson1011/**/FailTest.class</include>-->
+                        <include>${test.run}</include>
                     </includes>
                 </configuration>
                 <dependencies>
