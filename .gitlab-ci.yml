@@ -10,6 +10,10 @@ checkstyle:
     stage: check
     script:
         - mvn clean validate
+    artifacts:
+        paths:
+            - target/checkstyle-*.*
+        when: on_failure
 
 test_job_before:
     stage: check
@@ -24,6 +28,11 @@ test_job_after:
         - echo "script"
     after_script:
         - echo "after script"
+
+build_bash_script:
+    stage: build
+    script:
+        - sh ./script.sh
 
 build:
     stage: build
