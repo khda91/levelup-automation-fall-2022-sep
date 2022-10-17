@@ -47,12 +47,12 @@ public abstract class BaseSeleniumTest {
 
     @AfterEach
     public void tearDown() {
+        System.out.println("======== After");
         driver.quit();
     }
 
     @AfterAll
     void afterAll() {
-        System.out.println("======== After");
         new EnvironmentResourcesGenerator(((RemoteWebDriver) driver).getCapabilities()).createProperties();
     }
 }

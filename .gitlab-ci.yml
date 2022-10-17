@@ -1,0 +1,12 @@
+image: maven:3.8.6-eclipse-temurin-11
+
+stages:
+    - check
+    - build
+    - deploy
+    - release
+
+checkstyle:
+    stage: check
+    script:
+        - mvn clean validate
