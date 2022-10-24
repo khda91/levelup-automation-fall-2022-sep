@@ -2,9 +2,8 @@ package ru.levelp.at.lesson12.design.patterns.singleton;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
-import lombok.Getter;
-
 import javax.sql.DataSource;
+import lombok.Getter;
 
 public class DatabaseConnection {
 
