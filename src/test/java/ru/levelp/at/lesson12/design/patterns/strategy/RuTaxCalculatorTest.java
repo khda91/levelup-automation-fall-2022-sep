@@ -1,10 +1,10 @@
 package ru.levelp.at.lesson12.design.patterns.strategy;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.math.BigDecimal;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import java.math.BigDecimal;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 class RuTaxCalculatorTest {
 

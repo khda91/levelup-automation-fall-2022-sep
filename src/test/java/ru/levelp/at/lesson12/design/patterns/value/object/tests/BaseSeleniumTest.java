@@ -2,6 +2,7 @@ package ru.levelp.at.lesson12.design.patterns.value.object.tests;
 
 import com.github.javafaker.Faker;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import java.time.Duration;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -19,19 +20,15 @@ import ru.levelp.at.lesson12.design.patterns.value.object.context.TestContext;
 import ru.levelp.at.lesson12.design.patterns.value.object.steps.IndexPageSteps;
 import ru.levelp.at.lesson12.design.patterns.value.object.steps.LoginRegistrationSteps;
 
-import java.time.Duration;
-
 @TestInstance(Lifecycle.PER_CLASS)
 @ExtendWith(FailTestExtension.class)
 public abstract class BaseSeleniumTest {
 
+    protected static final Faker FAKER = new Faker();
     protected WebDriver driver;
-
     // но так делать не желательно, плохой подход через статику передавать информацию о driver в TestWatcher
     // protected static WebDriver driver;
     protected WebDriverWait wait;
-    protected static final Faker FAKER = new Faker();
-
     protected LoginRegistrationSteps loginRegistrationSteps;
     protected IndexPageSteps indexPageSteps;
 

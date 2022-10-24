@@ -16,6 +16,10 @@ public class PersonWithBuilder {
         this.salary = salary;
     }
 
+    public static Builder builder() {
+        return new Builder();
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -32,16 +36,12 @@ public class PersonWithBuilder {
         return salary;
     }
 
-    public static Builder builder() {
-        return new Builder();
-    }
-
     @Override
     public String toString() {
-        return "PersonWithBuilder{" +
-            "firstName='" + firstName + '\''
-            + ", lastName='" + lastName + '\''
-            + ", dateOfBirth=" + dateOfBirth
+        return "PersonWithBuilder{"
+            + "firstName='" + firstName
+            + "\', lastName='" + lastName
+            + "\', dateOfBirth=" + dateOfBirth
             + ", salary=" + salary
             + '}';
     }

@@ -1,10 +1,10 @@
 package ru.levelp.at.lesson12.design.patterns.value.object.steps;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import ru.levelp.at.lesson1011.cicd.IndexPage;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class IndexPageSteps {
 

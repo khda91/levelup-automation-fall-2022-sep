@@ -24,6 +24,27 @@ public class FailTest extends BaseSeleniumTest {
     private static final User USER =
         new User(FAKER.funnyName().name(), FAKER.internet().domainName(), FAKER.internet().password());
 
+    // Data Provider approach
+    static Stream<Arguments> dataProvider() {
+        return Stream.of(
+            Arguments.of(FAKER.funnyName().name(), FAKER.internet().domainName(), FAKER.internet().password()),
+            Arguments.of(FAKER.funnyName().name(), FAKER.internet().domainName(), FAKER.internet().password()),
+            Arguments.of(FAKER.funnyName().name(), FAKER.internet().domainName(), FAKER.internet().password())
+        );
+    }
+
+    // Entity Driven Data Provider
+    static Stream<Arguments> entityDataProvider() {
+        return Stream.of(
+            Arguments.of(new User(FAKER.funnyName().name(), FAKER.internet().domainName(),
+                FAKER.internet().password())),
+            Arguments.of(new User(FAKER.funnyName().name(), FAKER.internet().domainName(),
+                FAKER.internet().password())),
+            Arguments.of(new User(FAKER.funnyName().name(), FAKER.internet().domainName(),
+                FAKER.internet().password()))
+        );
+    }
+
     @Test
     @DisplayName("Тест не правильной Регистрации пользователя (fail)")
     @Description("Тест проверяет возможность регистрации с неправильными параметрами (fail)")
@@ -35,16 +56,6 @@ public class FailTest extends BaseSeleniumTest {
         loginRegistrationSteps.openPage();
         loginRegistrationSteps.registerUser(USER);
         loginRegistrationSteps.assertErrorText("register_not_correct_field (email)1");
-    }
-
-
-    // Data Provider approach
-    static Stream<Arguments> dataProvider() {
-        return Stream.of(
-            Arguments.of(FAKER.funnyName().name(), FAKER.internet().domainName(), FAKER.internet().password()),
-            Arguments.of(FAKER.funnyName().name(), FAKER.internet().domainName(), FAKER.internet().password()),
-            Arguments.of(FAKER.funnyName().name(), FAKER.internet().domainName(), FAKER.internet().password())
-        );
     }
 
     @ParameterizedTest
@@ -59,18 +70,6 @@ public class FailTest extends BaseSeleniumTest {
         loginRegistrationSteps.openPage();
         loginRegistrationSteps.registerUser(username, email, password);
         loginRegistrationSteps.assertErrorText("register_not_correct_field (email)1");
-    }
-
-    // Entity Driven Data Provider
-    static Stream<Arguments> entityDataProvider() {
-        return Stream.of(
-            Arguments.of(new User(FAKER.funnyName().name(), FAKER.internet().domainName(),
-                FAKER.internet().password())),
-            Arguments.of(new User(FAKER.funnyName().name(), FAKER.internet().domainName(),
-                FAKER.internet().password())),
-            Arguments.of(new User(FAKER.funnyName().name(), FAKER.internet().domainName(),
-                FAKER.internet().password()))
-        );
     }
 
     @ParameterizedTest

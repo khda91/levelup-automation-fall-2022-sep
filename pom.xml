@@ -28,6 +28,8 @@
         <spring-jdbc.version>5.3.23</spring-jdbc.version>
         <allure-junit5.version>2.19.0</allure-junit5.version>
         <aspectj.version>1.9.9.1</aspectj.version>
+        <cucumber.version>7.8.1</cucumber.version>
+        <junit-platform.version>1.9.1</junit-platform.version>
 
         <maven-checkstyle-plugin.version>3.2.0</maven-checkstyle-plugin.version>
         <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
@@ -39,6 +41,13 @@
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
             <version>${junit-jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-suite</artifactId>
+            <version>${junit-platform.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -114,6 +123,25 @@
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-junit5</artifactId>
             <version>${allure-junit5.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.platform</groupId>
+                    <artifactId>junit-platform-launcher</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${cucumber.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit-platform-engine</artifactId>
+            <version>${cucumber.version}</version>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>
@@ -129,6 +157,13 @@
             <id>lesson-1011-cicd-selenium</id>
             <properties>
                 <test.run>**/lesson1011/**/FailTest.class</test.run>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>lesson-13-bdd</id>
+            <properties>
+                <test.run>**/lesson13/**/*Test.class</test.run>
             </properties>
         </profile>
     </profiles>
