@@ -21,6 +21,14 @@ public class PeopleClient {
             .thenReturn();
     }
 
+    public Response getPerson(String id) {
+        return given()
+            .pathParam("personId", id)
+            .when()
+            .get(PERSON)
+            .andReturn();
+    }
+
     public Response getPeople() {
         return getPeople(Collections.emptyMap());
         //        return when()
